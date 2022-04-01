@@ -1,0 +1,17 @@
+*/tests/
+.git/
+.ipynb_checkpoints/*
+save/
+mlrun/
+*.ipynb
+Dockerfile
+.gitignore
+README.md
+env.*
+docs/
+
+# To prevent storing dev/temporary container data
+*.csv
+*.npy
+*.pkl
+data/
