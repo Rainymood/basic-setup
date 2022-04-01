@@ -1,12 +1,32 @@
 # Basic setup
 
-This repository contains a barebones but functional skeleton for how we architect most of our code. 
+This repository contains a basic functional skeleton to show how we structure most of our code, illustrated by an example of reversing a string
 
-* The entrypoints are defined in `entrypoints/` which is how we interface with the code
-* The code can be found in the `src/` folder and is organized by services and handlers
-* It has a small `Dockerfile` that builds and runs the code through the entrypoint
-* (Windows) To run the entrypoint from the cli we have to add it to our `PATH` we do this in the entrypoint itself
+* `entrypoints/` contains the entrypoints, which is how we interface with the code
+* `src/` contains the source code which is installable as a module and organized in services and handlers
+* `docker/Dockerfile` builds and runs the entrypoint
 
+(Windows) To run the entrypoint from the cli we must add `src/` to our `PATH`. This is done in the entrypoint code.
+
+## Directory structure
+
+```
+│   poetry.lock
+│   pyproject.toml
+│   README.md
+├───docker
+│       build.ps1
+│       Dockerfile
+├───entrypoint
+│       preprocessing.py
+└───src
+    └───corp_name
+        └───project_name
+            └───module_name
+                │   handler.py
+                └───services
+                        reverse_string_service.py
+```
 ## Setup
 
 ```bash
@@ -24,6 +44,8 @@ conda install nb_conda_kernels
 ```
 
 ## Usage
+
+Run the entrypoint
 
 ```python
 python entrypoint/preprocessing.py --input "Hello, my name is Jan."
@@ -43,7 +65,7 @@ Run the docker
 docker run -t basic:latest
 ```
 
-Pass custom arguments
+Run the docker with custom arguments
 
 ```bash
 docker run basic:latest --input "1234" # Outputs: 4321
